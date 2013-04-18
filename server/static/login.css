@@ -1,0 +1,53 @@
+body{
+	padding: 30px;
+	font-family: Helvetica, Arial, sans;
+	font-size: 14px;
+	background-color: #444 !important;
+}
+#title{
+	margin-bottom: 30px;
+	text-shadow: 1px 1px 1px #fff;
+}
+
+.hero-unit{
+	background-image: url('pong.png');
+	background-repeat: no-repeat;
+	background-position: 95% 15px;
+	background-size: 300px 408px;
+	height: 240px;
+}
+
+#in-game{
+	color: #fff;
+	text-align: center;
+}
+
+#in-game h1, #in-game h2{
+	margin-bottom: 30px;
+}
+
+#in-game h1{
+	font-size: 100px;
+	margin-bottom: 100px;
+	margin-top: 20px;
+}
+
+#stopButton, #startButton, #resetButton{
+	font-size: 24px;
+	padding: 20px;
+}
+
+#game-end{
+	font-size: 20px;
+	margin-bottom: 40px;
+}
+
+#end-message{
+	margin-bottom: 20px;
+}
+
+@media only screen and (max-width : 480px) {
+	.hero-unit{
+		padding: 60px 20px !important;
+	}
+}

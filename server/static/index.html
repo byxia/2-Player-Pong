@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+    <script src="http://192.168.1.19:3000/socket.io/socket.io.js"></script>
+    <script src='jquery.js'></script>
+    <script src='Ball.js'></script>
+    <script src='Character.js'></script>
+    <script src='ScaledPage.js'></script>
+    <script src='Accelerometer.js'></script>
+    <script src='PongGame.js'></script>
+    <script src='Util.js'></script>
+    <script src='TouchHandler.js'></script>
+
+
+    <title>Pong!</title>
+    <div id="waiting-display">
+        <h1>Waiting for players to connect.</h1>
+        <img src="loader.gif"/>
+    </div>
+
+    <script>
+    window.onload = function(){
+           
+            socket.on('gameStart',function(data){
+                $("#waiting-display").hide();
+                leftScore = 0;
+                rightScore = 0;
+                leftY = 0;
+                rightY = 0;
+                window.game = new PongGame();
+                start();
+                $("canvas").show();
+                gameOver = false;
+            });
+
+            socket.on('gameStop',function(data){
+                if(gameOver) return;
+                socket.emit('score',{
+                    left: leftScore,
+                    right:rightScore
+                });
+                gameOver = true;
+                $("canvas").hide();
+                $("#waiting-display").show();
+            });
+
+            // When getting a "receive" event from the server
+            socket.on('receive', function(data) {
+                if(data===undefined || data===null)
+                    return;
+                if(data.id === 1)
+                    leftY = data.acc.y;
+                else if(data.id === 2){
+                    rightY = data.acc.y;
+                }
+            });
+    }
+    </script>
+</head>
+<body>
+</body>
+</html>

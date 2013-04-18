@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="http://192.168.1.19:3000/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="Accelerometer.js"></script>
+	<script type="text/javascript" src="Util.js"></script>
+    <link href="login.css" rel="stylesheet" type="text/css">
+    <link href="Bootstrap.css" rel="stylesheet" type="text/css">
+	<title>Pong!</title>
+</head>
+<body>
+    <div id="not-in-game">
+        <div class="hero-unit">
+        	<h1 id="title">Pong!</h1>
+
+
+        	<form id="login" action="/login" method="post">
+                <div class="control-group">
+                    <label class="control-label" for="username">Username:</label>
+                    <div class="controls">
+                        <input type="text" name="username" placeholder="username"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="password">Password:</label>
+                    <div class="controls">
+                        <input type="password" name="password" placeholder="password"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" class="btn btn-primary btn-large" value="Log In" id="submit"/>
+                    </div>
+                </div>
+            </form>
+
+            <div id="reset">
+                <button id="resetButton" class="btn btn-primary">Reset Game</button>
+            </div>
+
+            <div id="game-end">
+                <div id="end-message">LADFJA</div>
+                <div id="end-score"></div>
+            </div>
+
+            <div id="start">
+        		<button id="startButton" class="btn btn-success">Start Game</button>
+        <!-- 
+        		<div id="player" value="player1"></div> -->
+            </div>
+        </div>
+    </div>
+    <div id="in-game">
+
+        <h1 id="player">P1</h1>
+
+        <h2 id="waiting">Waiting for another player</h2>
+
+        <button id="stopButton" class="btn btn-danger">Quit</button>
+    </div>
+
+	
+
+	<script type="text/javascript" src="controller.js"></script> 
+</body>
+</html>
